@@ -39,7 +39,9 @@ class Store {
         return this.getNotes().then(notes => [...notes, newNote]).then(updatedNotes => this.write(updatedNotes)).then(() => newNote)
     }
 
-
+    removeNote(id) {
+        return this.getNotes().then((notes)=> notes.filter((notes)=> notes.id != id)).then((filtered)=> this.write(filtered))
+    }
 
 }
 module.exports = new Store
